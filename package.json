@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/sam-pop/WIKM/issues"
   },
-  "homepage": "https://github.com/sam-pop/WIKM#readme"
+  "homepage": "https://github.com/sam-pop/WIKM#readme",
+  "dependencies": {
+    "clarifai": "^2.7.1"
+  }
 }
