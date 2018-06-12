@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({
 
 // Router
 require('')(app);
-require('')(app);
 
 // Listener
 app.listen(PORT, function () {
