@@ -22,7 +22,7 @@ cloudinary.config({
 
 // uploads the image to a remote server using the cloudinary API and returns a link to the stored image
 // using the image link - performs a model predict query to the clarifai (machine learning) API
-cloudinary.uploader.upload("./test.jpg", function (result) {
+cloudinary.uploader.upload("./test.jpg", function (result) { // uploads to https://res.cloudinary.com/samp/image/upload/ (unsigned uploads preset name: kd18s7co)
     if (result)
         analyzeImage = result.url;
     console.log(result.url);
@@ -35,15 +35,3 @@ cloudinary.uploader.upload("./test.jpg", function (result) {
         }
     );
 });
-/*
-TODO:
-1) pass the api the image url / location
-2) map out the response object into small chuncks of information
-3) filter and manipulate the information for our needs
-*/
-
-// predict the contents of an image by url
-
-
-// unsigned uploads Preset name: kd18s7co
-// uploads to https://res.cloudinary.com/samp/image/upload/
