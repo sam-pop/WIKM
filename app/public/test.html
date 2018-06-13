@@ -11,11 +11,79 @@
 
 <body>
     <p>Capture Image:
-        <input type="file" accept="image/*" id="capture" capture="camera">
+        <input type="file" accept="image/*" id="file-input" capture="camera">
     </p>
+    <video id="video" width=320 height=240></video>
+    <button id="capture-button">Capture</button>
+    <canvas id="canvas" width=320 height=240></canvas>
 
     <!-- JS SCRIPT -->
     <script>
+        //a function to detect if user has the feature to allow us to access their camera
+        function hasGetUserMedia() {
+            return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+        }
+        if (hasGetUserMedia()) {
+            //user is set to upload image
+        } else {
+            alert('getUserMedia() is not supported by your browser');
+        }
+
+        //gaining access to users device
+        const constraints = {
+            video: true
+        };
+        const video = document.querySelector('video');
+
+        function handleSuccess(stream) {
+            video.srcObject = stream;
+        }
+
+        function handleError(error) {
+            console.log(error);
+        }
+        navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+
+
+        //elements for capturing the picture
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const captureButton = document.getElementById('capture');
+
+        document.getElementById("capture-button").addEventListener("click", function () {
+            context.drawImage(video, 0, 0, 320, 240);
+        });
+
+
+        //store image into local storage=========================
+        var storageFiles = JSON.parse(localStorage.getItem("storageFlies")) || {};
+            console.log(storageFiles);
+        var currentImage = "???";
+            console.log(currentImage)
+        //function once the photo is loaded
+        currentImage.addEventListener("load", function() {
+            var imgCanvas = document.createElement("canvas");
+            var imgContext = imgCanvas.getContext("2d");
+
+            imgCanvas.width = currentImage.width;
+            imgCanvas.height = currentImage.height;
+
+            imgContext.drawImage(currentImage, 0, 0, currentImage.width, currentImage.height);
+            
+
+            storageFiles.currentImage = imgCanvas.toDataURL("image/png");
+
+            try {
+                localStorage.setItem("storageFiles", JSON.stringify(storageFiles));
+            } catch (error) {
+                console.log("Storage failed: " + error);
+            }
+
+            
+        });
+
+
+
     </script>
 </body>
 
