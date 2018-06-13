@@ -10,24 +10,29 @@
 </head>
 
 <body>
+    <div class="container">
     <p>Capture Image:
         <input type="file" accept="image/*" id="file-input" capture="camera">
     </p>
-    <video id="video" width=320 height=240></video>
-    <button id="capture-button">Capture</button>
+    <video id="video" autoplay width=320 height=240></video>
     <canvas id="canvas" width=320 height=240></canvas>
+    <!-- <br> -->
+    <button id="capture-button">Capture</button>
+</div>
 
     <!-- JS SCRIPT -->
     <script>
+
         //a function to detect if user has the feature to allow us to access their camera
         function hasGetUserMedia() {
             return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
         }
         if (hasGetUserMedia()) {
             //user is set to upload image
+            console.log("get user media is set up")
         } else {
-            alert('getUserMedia() is not supported by your browser');
-        }
+            console.log('getUserMedia() is not supported by your browser');
+        } 
 
         //gaining access to users device
         const constraints = {
@@ -52,13 +57,14 @@
 
         document.getElementById("capture-button").addEventListener("click", function () {
             context.drawImage(video, 0, 0, 320, 240);
+            $("video").hide();
         });
 
 
         //store image into local storage=========================
         var storageFiles = JSON.parse(localStorage.getItem("storageFlies")) || {};
             console.log(storageFiles);
-        var currentImage = "???";
+        // var currentImage =      (context); //THIS NEEDS TO BE FIXED
             console.log(currentImage)
         //function once the photo is loaded
         currentImage.addEventListener("load", function() {
