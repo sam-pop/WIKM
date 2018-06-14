@@ -6,6 +6,7 @@ const CLARIFAI_API_KEY = process.env.key;
 const CLOUDINARY_API_PUBLIC = process.env.publicKey;
 const CLOUDINARY_API_SECRET = process.env.secretKey;
 
+let imageFile = "./test.jpg"; //will hold the image file 
 let analyzeImage = ""; // will hold the image url
 
 // init Clarifai API
@@ -22,7 +23,7 @@ cloudinary.config({
 
 // uploads the image to a remote server using the cloudinary API and returns a link to the stored image
 // using the image link - performs a model predict query to the clarifai (machine learning) API
-cloudinary.uploader.upload("./test.jpg", function (result) { // uploads to https://res.cloudinary.com/samp/image/upload/ (unsigned uploads preset name: kd18s7co)
+cloudinary.uploader.upload(imageFile, function (result) { // uploads to https://res.cloudinary.com/samp/image/upload/ (unsigned uploads preset name: kd18s7co)
     if (result)
         analyzeImage = result.url;
     console.log(result.url);
