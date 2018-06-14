@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
     <title>TEST PAGE</title>
 </head>
 
@@ -23,6 +24,19 @@
 
     <!-- JS SCRIPT -->
     <script>
+        // initialize with your api key
+        const cApp = new Clarifai.App({
+            apiKey: 'c145ab25a98247e2a11164de9969fe12'
+        });
+        cApp.models.predict("bd367be194cf45149e75f01d59f77ba7", "https://media.timeout.com/images/102945700/image.jpg")
+            .then(
+                function (response) {
+                    console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
+                },
+                function (err) {
+                    console.error(err);
+                }
+            );
     </script>
 </body>
 
