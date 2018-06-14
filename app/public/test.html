@@ -16,13 +16,18 @@
     </p>
     <video id="video" autoplay width=320 height=240></video>
     <canvas id="canvas" width=320 height=240></canvas>
+    <div id="image-div"><img></div>
     <!-- <br> -->
     <button id="capture-button">Capture</button>
+
+    <a href="#" id="imageData" type="text" target="_blank">
+        <img id="preview" style="width:320px; height:240px;" />
+    </a>
 </div>
 
     <!-- JS SCRIPT -->
     <script>
-
+        var ls = window.localStorage;
         //a function to detect if user has the feature to allow us to access their camera
         function hasGetUserMedia() {
             return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
@@ -58,35 +63,57 @@
         document.getElementById("capture-button").addEventListener("click", function () {
             context.drawImage(video, 0, 0, 320, 240);
             $("video").hide();
-        });
-
-
-        //store image into local storage=========================
-        var storageFiles = JSON.parse(localStorage.getItem("storageFlies")) || {};
-            console.log(storageFiles);
-        // var currentImage =      (context); //THIS NEEDS TO BE FIXED
-            console.log(currentImage)
-        //function once the photo is loaded
-        currentImage.addEventListener("load", function() {
-            var imgCanvas = document.createElement("canvas");
-            var imgContext = imgCanvas.getContext("2d");
-
-            imgCanvas.width = currentImage.width;
-            imgCanvas.height = currentImage.height;
-
-            imgContext.drawImage(currentImage, 0, 0, currentImage.width, currentImage.height);
-            
-
-            storageFiles.currentImage = imgCanvas.toDataURL("image/png");
-
-            try {
-                localStorage.setItem("storageFiles", JSON.stringify(storageFiles));
-            } catch (error) {
-                console.log("Storage failed: " + error);
-            }
-
             
         });
+
+        function drawImage() {
+            var dataURL;
+            canvas.width = canvas.width;
+
+            if (img.width) context.drawImage(img, x, y, neww, newh);
+
+            dataURL = canvas.toDataURL();
+
+            document.getElementById('imageData').href = dataURL;
+            document.getElementById('preview').src = dataURL;
+
+            ls.setItem('image', img.src);
+        }
+
+        // //convert image into dataURL
+        // function getImageDataURL(img) {
+
+        // }
+
+
+
+        // //store image into local storage=========================
+        // var storageFiles = JSON.parse(localStorage.getItem("storageFlies")) || {};
+        //     console.log(storageFiles);
+        // // var currentImage =      (context); //THIS NEEDS TO BE FIXED
+        //     console.log(currentImage)
+        // //function once the photo is loaded
+        // currentImage.addEventListener("load", function() {
+        //     var imgCanvas = document.createElement("canvas");
+        //     var imgContext = imgCanvas.getContext("2d");
+
+        //     imgCanvas.width = currentImage.width;
+        //     imgCanvas.height = currentImage.height;
+
+        //     imgContext.drawImage(currentImage, 0, 0, currentImage.width, currentImage.height);
+            
+
+        //     storageFiles.currentImage = imgCanvas.toDataURL("image/png");
+
+        //     try {
+        //         localStorage.setItem("storageFiles", JSON.stringify(storageFiles));
+        //         console.log("storage");
+        //     } catch (error) {
+        //         console.log("Storage failed: " + error);
+        //     }
+
+            
+        // });
 
 
 
