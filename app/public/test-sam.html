@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+    <script src="https://widget.cloudinary.com/global/all.js"></script>
+    <title>TEST PAGE</title>
+</head>
+
+<body>
+    <p>Capture Image:
+        <!-- <input type="file" accept="image/*" capture id="cap"> -->
+
+        <!-- onchange="handleFiles(this.files)" -->
+        <canvas></canvas>
+        <!-- <input type="file" accept="image/*" id="capture" capture="camera"> -->
+    </p>
+    <div class="test"></div>
+
+    <a href="#" id="upload_widget_opener">Capture / Upload imgae</a>
+
+    <!-- JS SCRIPT -->
+    <script>
+        const CLARIFAI_FOOD_MODEL = "bd367be194cf45149e75f01d59f77ba7";
+        // initialize Clarifai API
+        const cApp = new Clarifai.App({
+            apiKey: 'c145ab25a98247e2a11164de9969fe12'
+        });
+
+        let picUrl;
+
+        $(function () {
+
+            $('#upload_widget_opener').cloudinary_upload_widget({
+                    cloud_name: 'samp',
+                    upload_preset: 'kd18s7co',
+                    cropping: 'server',
+                    folder: 'user_photos'
+                },
+                function (error, result) {
+                    picUrl = result[0].url;
+                    console.log(error, result[0].url)
+                    runPredict(picUrl);
+                });
+            $('.cloudinary-button').text('Can we use this?');
+        });
+
+        function runPredict(picUrl) {
+            cApp.models.predict(CLARIFAI_FOOD_MODEL, picUrl)
+                .then(
+                    function (response) {
+                        console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
+                    },
+                    function (err) {
+                        console.error(err);
+                    }
+                );
+        }
+
+
+
+
+
+
+        // document.getElementById("upload_widget_opener").addEventListener("click", function () {
+        //     cloudinary.openUploadWidget({
+        //             cloud_name: 'samp',
+        //             upload_preset: 'kd18s7co'
+        //         },
+        //         function (error, result) {
+        //             console.log(error, result)
+        //         });
+        // }, false);
+    </script>
+</body>
+
+</html>
