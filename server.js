@@ -15,9 +15,6 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Router
-app.use(express.static(process.cwd() + '/public'));
-// app.use(express.static(path.join(__dirname, 'public/assets')));
-// app.use(express.static(path.resolve('./public')));
 require('./app/routing/apiRoutes')(app);
 require('./app/routing/htmlRoutes')(app);
 

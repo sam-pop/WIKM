@@ -10,25 +10,21 @@ const cApp = new Clarifai.App({
 });
 
 module.exports = function (app) {
+
     app.post('/WIKM', function (req, res) {
         if (req.body) {
-            // console.log(req.body.url);
-            res.json(runPredict(req.body.url));
+            img = req.body.url;
+
+            // passes the Cloudinary url to the Clarifai API and returns the ingredients array object 
+            cApp.models.predict(CLARIFAI_FOOD_MODEL, img).then(
+                function (response) {
+                    let result = response.outputs[0].data;
+                    res.json(result);
+                },
+                function (err) {
+                    console.error(err);
+                }
+            );
         }
     });
 };
-
-
-function runPredict(img) {
-    console.log('​runPredict -> img', img);
-    // using the image link - performs a model predict query to the clarifai (machine learning) API
-    cApp.models.predict(CLARIFAI_FOOD_MODEL, img).then(
-        function (response) {
-            console.log('​runPredict -> response.outputs[0].data', response.outputs[0].data);
-            return (response.outputs[0].data);
-        },
-        function (err) {
-            console.error(err);
-        }
-    );
-}
