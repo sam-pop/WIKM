@@ -6,7 +6,7 @@ const path = require('path');
 
 // Express app
 const app = express();
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT || 3000;
 
 // body-parser middleware
 app.use(bodyParser.json());
