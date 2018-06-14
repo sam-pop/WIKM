@@ -14,7 +14,7 @@
 
 <body>
     <p>Capture Image:
-        <input type="file" accept="image/*" capture id="cap">
+        <!-- <input type="file" accept="image/*" capture id="cap"> -->
 
         <!-- onchange="handleFiles(this.files)" -->
         <canvas></canvas>
@@ -22,7 +22,7 @@
     </p>
     <div class="test"></div>
 
-    <a href="#" id="upload_widget_opener">Upload multiple images</a>
+    <a href="#" id="upload_widget_opener">Capture / Upload imgae</a>
 
     <!-- JS SCRIPT -->
     <script>
@@ -35,6 +35,7 @@
         let picUrl;
 
         $(function () {
+
             $('#upload_widget_opener').cloudinary_upload_widget({
                     cloud_name: 'samp',
                     upload_preset: 'kd18s7co',
@@ -46,6 +47,7 @@
                     console.log(error, result[0].url)
                     runPredict(picUrl);
                 });
+            $('.cloudinary-button').text('Can we use this?');
         });
 
         function runPredict(picUrl) {
@@ -59,8 +61,6 @@
                     }
                 );
         }
-
-
 
 
 
