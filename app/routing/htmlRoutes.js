@@ -3,17 +3,18 @@ const path = require('path');
 
 module.exports = function (app) {
 
-    app.get('/test', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/test.html'));
+    app.get('/', function (req, res) {
+        res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
+    //TODO: DELETE (testing) 
     app.get('/test2', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/test2.html'));
+        res.sendFile(path.join(__dirname, '../public/test-sam.html'));
     });
 
     // default route
-    // app.get('*', function (req, res) {
-    //     res.sendFile(path.join(__dirname, '../public/index.html'));
-    // });
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname, '../public/index.html'));
+    });
 
 };
