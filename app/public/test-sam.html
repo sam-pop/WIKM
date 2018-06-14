@@ -26,39 +26,34 @@
 
     <!-- JS SCRIPT -->
     <script>
-        const CLARIFAI_FOOD_MODEL = "bd367be194cf45149e75f01d59f77ba7";
-        // initialize Clarifai API
-        const cApp = new Clarifai.App({
-            apiKey: 'c145ab25a98247e2a11164de9969fe12'
-        });
-
         let picUrl;
-
+        let dataSend = {};
         $(function () {
 
             $('#upload_widget_opener').cloudinary_upload_widget({
                     cloud_name: 'samp',
                     upload_preset: 'kd18s7co',
                     cropping: 'server',
-                    folder: 'user_photos'
+                    folder: 'user_photos',
                 },
                 function (error, result) {
+                    if (error) {
+                        console.log(error);
+                        return;
+                    }
                     picUrl = result[0].url;
-                    console.log('​picUrl', picUrl);
-                    let response = {};
-                    response.url = picUrl;
-                    $.post('/WIKM', response, function (data) {
-                        console.log('here');
+                    console.log('​picUrl:', picUrl);
+                    dataSend.url = picUrl;
+                    $.post('/WIKM', dataSend, function (data) {
+                        console.log(dataSend);
                         if (data) {
                             console.log("####################");
                             console.log(data);
                             console.log("####################");
                         }
                     });
-                    if (error)
-                        console.log(error);
+
                 });
-            $('.cloudinary-button').text('Can we use this?');
         });
 
         // function runPredict(picUrl) {
