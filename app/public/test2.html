@@ -1,82 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>TEST PAGE</title>
+
+    <title>Take or select photo(s) and upload</title>
+    <script type="text/javascript">
+        function fileSelected() {
+
+            var count = document.getElementById('fileToUpload').files.length;
+
+            document.getElementById('details').innerHTML = "";
+
+            for (var index = 0; index < count; index++)
+
+            {
+
+                var file = document.getElementById('fileToUpload').files[index];
+
+                var fileSize = 0;
+
+                if (file.size > 1024 * 1024)
+
+                    fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + 'MB';
+
+                else
+
+                    fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + 'KB';
+
+                document.getElementById('details').innerHTML += 'Name: ' + file.name + '<br>Size: ' + fileSize +
+                    '<br>Type: ' + file.type;
+
+                document.getElementById('details').innerHTML += '<p>';
+
+            }
+
+        }
+
+        function uploadFile() {
+
+            var fd = new FormData();
+
+            var count = document.getElementById('fileToUpload').files.length;
+
+            for (var index = 0; index < count; index++)
+
+            {
+
+                var file = document.getElementById('fileToUpload').files[index];
+                console.log(file);
+                fd.append(file.name, file);
+
+            }
+
+            console.log(fd);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.upload.addEventListener("progress", uploadProgress, false);
+
+            xhr.addEventListener("load", uploadComplete, false);
+
+            xhr.addEventListener("error", uploadFailed, false);
+
+            xhr.addEventListener("abort", uploadCanceled, false);
+
+            xhr.open("POST", "savetofile.aspx");
+
+            xhr.send(fd);
+
+        }
+
+        function uploadProgress(evt) {
+
+            if (evt.lengthComputable) {
+
+                var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+
+                document.getElementById('progress').innerHTML = percentComplete.toString() + '%';
+
+            } else {
+
+                document.getElementById('progress').innerHTML = 'unable to compute';
+
+            }
+
+        }
+
+        function uploadComplete(evt) {
+
+            /* This event is raised when the server send back a response */
+
+            alert(evt.target.responseText);
+
+        }
+
+        function uploadFailed(evt) {
+
+            alert("There was an error attempting to upload the file.");
+
+        }
+
+        function uploadCanceled(evt) {
+
+            alert("The upload has been canceled by the user or the browser dropped the connection.");
+
+        }
+    </script>
+
 </head>
 
 <body>
-    <div class="container">
-        <p>Capture Image:
-            <input type="file" accept="image/*" id="file-input" capture="camera">
-        </p>
-        <video id="video" autoplay width=320 height=240></video>
-        <canvas id="canvas" width=320 height=240></canvas>
-        <!-- <br> -->
-        <button id="capture-button">Capture</button>
-    </div>
 
-    <!-- JS SCRIPT -->
-    <script>
-        //a function to detect if user has the feature to allow us to access their camera
-        function hasGetUserMedia() {
-            return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-        }
-        if (hasGetUserMedia()) {
-            //user is set to upload image
-            console.log("get user media is set up")
-        } else {
-            console.log('getUserMedia() is not supported by your browser');
-        }
-        //gaining access to users device
-        const constraints = {
-            video: true
-        };
-        const video = document.querySelector('video');
+    <form id="form1" enctype="multipart/form-data" method="post" action="Upload.aspx">
 
-        function handleSuccess(stream) {
-            video.srcObject = stream;
-        }
+        <div>
 
-        function handleError(error) {
-            console.log(error);
-        }
+            <label for="fileToUpload">Take or select photo(s)</label>
+            <br />
 
-        navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
-        //elements for capturing the picture
-        const canvas = document.getElementById('canvas');
-        const context = canvas.getContext('2d');
-        const captureButton = document.getElementById('capture');
-        document.getElementById("capture-button").addEventListener("click", function () {
-            context.drawImage(video, 0, 0, 640, 480);
-            $("video").hide();
-        });
-        //store image into local storage=========================
-        var storageFiles = JSON.parse(localStorage.getItem("storageFlies")) || {};
-        console.log(storageFiles);
-        var currentImage = context; //THIS NEEDS TO BE FIXED
-        console.log(currentImage)
-        //function once the photo is loaded
-        currentImage.addEventListener("load", function () {
-            var imgCanvas = document.createElement("canvas");
-            var imgContext = imgCanvas.getContext("2d");
-            imgCanvas.width = currentImage.width;
-            imgCanvas.height = currentImage.height;
-            imgContext.drawImage(currentImage, 0, 0, currentImage.width, currentImage.height);
+            <input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" accept="image/*" capture="camera" />
 
-            storageFiles.currentImage = imgCanvas.toDataURL("image/png");
-            try {
-                localStorage.setItem("storageFiles", JSON.stringify(storageFiles));
-            } catch (error) {
-                console.log("Storage failed: " + error);
-            }
+        </div>
 
-        });
-    </script>
+        <div id="details"></div>
+
+        <div>
+
+            <input type="button" onclick="uploadFile()" value="Upload" />
+
+        </div>
+
+        <div id="progress"></div>
+
+    </form>
+
 </body>
 
 </html>
