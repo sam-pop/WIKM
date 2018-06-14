@@ -26,15 +26,45 @@
 
     <!-- JS SCRIPT -->
     <script>
-        $('#upload_widget_opener').cloudinary_upload_widget({
-                cloud_name: 'samp',
-                upload_preset: 'kd18s7co',
-                cropping: 'server',
-                folder: 'user_photos'
-            },
-            function (error, result) {
-                console.log(error, result)
-            });
+        const CLARIFAI_FOOD_MODEL = "bd367be194cf45149e75f01d59f77ba7";
+        // initialize Clarifai API
+        const cApp = new Clarifai.App({
+            apiKey: 'c145ab25a98247e2a11164de9969fe12'
+        });
+
+        let picUrl;
+
+        $(function () {
+            $('#upload_widget_opener').cloudinary_upload_widget({
+                    cloud_name: 'samp',
+                    upload_preset: 'kd18s7co',
+                    cropping: 'server',
+                    folder: 'user_photos'
+                },
+                function (error, result) {
+                    picUrl = result[0].url;
+                    console.log(error, result[0].url)
+                    runPredict(picUrl);
+                });
+        });
+
+        function runPredict(picUrl) {
+            cApp.models.predict(CLARIFAI_FOOD_MODEL, picUrl)
+                .then(
+                    function (response) {
+                        console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
+                    },
+                    function (err) {
+                        console.error(err);
+                    }
+                );
+        }
+
+
+
+
+
+
 
 
         // document.getElementById("upload_widget_opener").addEventListener("click", function () {
@@ -46,23 +76,6 @@
         //             console.log(error, result)
         //         });
         // }, false);
-
-        // const CLARIFAI_FOOD_MODEL = "bd367be194cf45149e75f01d59f77ba7";
-
-        // // initialize Clarifai API
-        // const cApp = new Clarifai.App({
-        //     apiKey: 'c145ab25a98247e2a11164de9969fe12'
-        // });
-
-        // cApp.models.predict(CLARIFAI_FOOD_MODEL, "https://media.timeout.com/images/102945700/image.jpg")
-        //     .then(
-        //         function (response) {
-        //             console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
-        //         },
-        //         function (err) {
-        //             console.error(err);
-        //         }
-        //     );
     </script>
 </body>
 
