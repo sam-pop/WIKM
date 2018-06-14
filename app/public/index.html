@@ -9,6 +9,15 @@
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
     <script src="https://widget.cloudinary.com/global/all.js"></script>
     <title>Will It Kill Me?</title>
+    <style>
+        .cloudinary-button {
+            background: linear-gradient(to bottom, red 0%, darkred 100%);
+        }
+
+        .cloudinary-button:hover {
+            background: linear-gradient(to bottom, darkred 0%, darkred 100%);
+        }
+    </style>
 </head>
 
 <!-- ##################################### Body ##################################### -->
@@ -16,9 +25,11 @@
 <body>
 
     <h1>hello</h1>
-    <div class="test">
-        <a href="#" id="upload_widget_opener">Capture / Upload imgae</a>
+    <div class="firstScreen">
+        <a href="#" id="upload_widget_opener">Capture image</a>
     </div>
+
+    <div class="secondScreen"></div>
 
 
 
@@ -28,6 +39,7 @@
         // variables
         let picURL;
         let reqData = {};
+        let concepts = {};
 
         $(function () {
             // create and init the cloudinary upload widget
@@ -40,7 +52,7 @@
                     theme: "white",
                     button_caption: "Get Started",
                     show_powered_by: false,
-                    stylesheet: "#cloudinary-navbar .source.active {border-bottom: 6px solid grey;}"
+                    stylesheet: "#cloudinary-navbar .source.active {border-bottom: 6px solid grey;} #cloudinary-widget .button, #cloudinary-widget .button.small_button {background: red;} #cloudinary-widget .button:hover, #cloudinary-widget .button.small_button:hover, #cloudinary-widget .upload_button_holder:hover .button {background: darkred;} #cloudinary-widget .button, #cloudinary-widget .button.small_button {background:red;}"
                 },
                 function (error, result) {
                     // error function
@@ -54,11 +66,20 @@
                     $.post('/api', reqData, function (resData) {
                         console.log(reqData);
                         if (resData) {
+                            concepts = resData;
                             console.log("####################");
                             console.log(resData);
                             console.log("####################");
+                            console.log(concepts.concepts[0].name);
+                            $('.secondScreen').html(concepts.concepts[0].name);
+
+
+
                         }
                     });
+                    $('.firstScreen').hide(); // hides the capture/upload image button
+
+
                 });
         }); //END OF $
     </script>
