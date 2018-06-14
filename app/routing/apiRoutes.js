@@ -11,7 +11,7 @@ const cApp = new Clarifai.App({
 
 module.exports = function (app) {
 
-    app.post('/WIKM', function (req, res) {
+    app.post('/api', function (req, res) {
         if (req.body) {
             img = req.body.url;
 
