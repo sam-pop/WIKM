@@ -1,3 +1,7 @@
+/* ################
+    DEPRECATED
+#################*/
+
 require("dotenv").config();
 const Clarifai = require('clarifai');
 const cloudinary = require('cloudinary');
@@ -29,7 +33,7 @@ cloudinary.uploader.upload(imageFile, function (result) { // uploads to https://
     console.log(result.url);
     cApp.models.predict(CLARIFAI_FOOD_MODEL, analyzeImage).then(
         function (response) {
-            console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
+            console.log(response.outputs[0].data);
         },
         function (err) {
             console.error(err);
