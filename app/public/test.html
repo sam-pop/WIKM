@@ -11,10 +11,15 @@
 
 <body>
     <p>Capture Image:
-        <input type="file" accept="image/*" id="capture" capture="camera">
+        <input type="file" accept="image/*" capture id="cap">
+
+        <!-- onchange="handleFiles(this.files)" -->
+        <canvas></canvas>
+        <!-- <input type="file" accept="image/*" id="capture" capture="camera"> -->
     </p>
-    <input name="file" type="file" class="file-upload" data-cloudinary-field="image_id" data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
-    />
+    <div class="test"></div>
+
+
 
     <!-- JS SCRIPT -->
     <script>

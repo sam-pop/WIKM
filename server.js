@@ -1,6 +1,8 @@
 // Dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
+
 
 // Express app
 const app = express();
@@ -13,6 +15,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Router
+app.use('/scripts', express.static(path.join(__dirname, 'node_modules/')));
 // require('./app/routing/apiRoutes')(app);
 require('./app/routing/htmlRoutes')(app);
 
