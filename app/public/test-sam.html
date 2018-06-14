@@ -38,7 +38,7 @@
                     picUrl = result[0].url;
                     console.log('​picUrl:', picUrl);
                     dataSend.url = picUrl;
-                    $.post('/WIKM', dataSend, function (data) {
+                    $.post('/api', dataSend, function (data) {
                         console.log(dataSend);
                         if (data) {
                             console.log("####################");
@@ -50,33 +50,6 @@
 
                 });
         });
-
-        // function runPredict(picUrl) {
-        //     cApp.models.predict(CLARIFAI_FOOD_MODEL, picUrl)
-        //         .then(
-        //             function (response) {
-        //                 console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
-        //             },
-        //             function (err) {
-        //                 console.error(err);
-        //             }
-        //         );
-        // }
-
-
-
-
-
-
-        // document.getElementById("upload_widget_opener").addEventListener("click", function () {
-        //     cloudinary.openUploadWidget({
-        //             cloud_name: 'samp',
-        //             upload_preset: 'kd18s7co'
-        //         },
-        //         function (error, result) {
-        //             console.log(error, result)
-        //         });
-        // }, false);
     </script>
 </body>
 
