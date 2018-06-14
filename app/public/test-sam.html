@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
     <script src="https://widget.cloudinary.com/global/all.js"></script>
+    <link rel="stylesheet" href="/style.css">
     <title>TEST PAGE</title>
 </head>
 
@@ -43,23 +44,34 @@
                 },
                 function (error, result) {
                     picUrl = result[0].url;
-                    console.log(error, result[0].url)
-                    runPredict(picUrl);
+                    console.log('​picUrl', picUrl);
+                    let response = {};
+                    response.url = picUrl;
+                    $.post('/WIKM', response, function (data) {
+                        console.log('here');
+                        if (data) {
+                            console.log("####################");
+                            console.log(data);
+                            console.log("####################");
+                        }
+                    });
+                    if (error)
+                        console.log(error);
                 });
             $('.cloudinary-button').text('Can we use this?');
         });
 
-        function runPredict(picUrl) {
-            cApp.models.predict(CLARIFAI_FOOD_MODEL, picUrl)
-                .then(
-                    function (response) {
-                        console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
-                    },
-                    function (err) {
-                        console.error(err);
-                    }
-                );
-        }
+        // function runPredict(picUrl) {
+        //     cApp.models.predict(CLARIFAI_FOOD_MODEL, picUrl)
+        //         .then(
+        //             function (response) {
+        //                 console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
+        //             },
+        //             function (err) {
+        //                 console.error(err);
+        //             }
+        //         );
+        // }
 
 
 
