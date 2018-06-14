@@ -1,1 +1,68 @@
-index page
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+    <script src="https://widget.cloudinary.com/global/all.js"></script>
+    <title>Will It Kill Me?</title>
+</head>
+
+<!------------------------------------ Body  ------------------------------------>
+
+<body>
+
+    <h1>hello</h1>
+    <div class="test">
+        <a href="#" id="upload_widget_opener">Capture / Upload imgae</a>
+    </div>
+
+
+
+
+    <!-------------------------------- JavaScript  -------------------------------->
+    <script>
+        // variables
+        let picURL;
+        let reqData = {};
+
+        $(function () {
+            // create and init the cloudinary upload widget
+            $('#upload_widget_opener').cloudinary_upload_widget({
+                    cloud_name: 'samp',
+                    upload_preset: 'kd18s7co',
+                    cropping: 'server',
+                    folder: 'user_photos',
+                    multiple: false,
+                    theme: "white",
+                    button_caption: "Get Started",
+                    show_powered_by: false,
+                    stylesheet: "#cloudinary-navbar .source.active {border-bottom: 6px solid grey;}"
+                },
+                function (error, result) {
+                    // error function
+                    if (error) {
+                        console.log(error);
+                        return;
+                    }
+                    picURL = result[0].url;
+                    reqData.url = picURL;
+                    // POST to api
+                    $.post('/api', reqData, function (resData) {
+                        console.log(reqData);
+                        if (resData) {
+                            console.log("####################");
+                            console.log(resData);
+                            console.log("####################");
+                        }
+                    });
+                });
+        }); //END OF $
+    </script>
+
+</body>
+
+</html>
