@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+    <!-- <script src="/p/bundle.js"></script> -->
     <title>TEST PAGE</title>
 </head>
 
@@ -24,11 +25,14 @@
 
     <!-- JS SCRIPT -->
     <script>
-        // initialize with your api key
+        const CLARIFAI_FOOD_MODEL = "bd367be194cf45149e75f01d59f77ba7";
+
+        // initialize Clarifai API
         const cApp = new Clarifai.App({
             apiKey: 'c145ab25a98247e2a11164de9969fe12'
         });
-        cApp.models.predict("bd367be194cf45149e75f01d59f77ba7", "https://media.timeout.com/images/102945700/image.jpg")
+
+        cApp.models.predict(CLARIFAI_FOOD_MODEL, "https://media.timeout.com/images/102945700/image.jpg")
             .then(
                 function (response) {
                     console.log(response.outputs[0].data); //TODO: perform meaningful task with the data
