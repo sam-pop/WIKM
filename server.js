@@ -15,7 +15,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Router
-app.use('/scripts', express.static(path.join(__dirname, 'node_modules/')));
+// app.use('/scripts', express.static(path.join(__dirname, 'node_modules/')));
+// app.use('/p', express.static(path.join(__dirname, '/')));
 // require('./app/routing/apiRoutes')(app);
 require('./app/routing/htmlRoutes')(app);
 
