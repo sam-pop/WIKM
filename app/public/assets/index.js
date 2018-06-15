@@ -12,8 +12,9 @@ $(function () {
     } else {
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>Will It Kill Me?");
     }
-    // init materialize side nav for small screens
+    // init materialize components
     $('.sidenav').sidenav();
+    $('select').formSelect();
 
     // create and init the cloudinary upload widget
     $('#upload_widget_opener').cloudinary_upload_widget({
@@ -37,33 +38,20 @@ $(function () {
             reqData.url = picURL;
             // POST to api
             $.post('/api', reqData, function (resData) {
-                console.log(reqData);
                 if (resData) {
                     conceptLabels(resData.concepts, allConcepts);
-                    console.log('​allConcepts', allConcepts);
                     if (screenSize < 667) {
                         conceptsToArrayCustomSize(resData.concepts, ingArray, resData.concepts.length, 2);
                     } else {
                         conceptsToArray(resData.concepts, ingArray);
                     }
-                    console.log("####################");
-                    console.log(ingArray);
-                    console.log("####################");
 
                     // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
                     let pic = new Image();
                     if (screenSize < 667) {
-                        pic.onload = function () {
-                            if (this.width > this.height) {
-                                pic.className = 'hPic z-depth-2';
-                            } else pic.className = 'vPic z-depth-2';
-                        }
+                        picClasses(pic, "hPic z-depth-2", "vPic z-depth-2");
                     } else {
-                        pic.onload = function () {
-                            if (this.width > this.height) {
-                                pic.width = 500;
-                            } else pic.width = 300;
-                        }
+                        picClasses(pic, 500, 300);
                     }
                     pic.src = reqData.url;
                     $('.userPic').append(pic);
@@ -102,13 +90,14 @@ $(function () {
 }); //END OF $
 
 
-
+// copies all the concepts labels from one array to another
 function conceptLabels(fromArray, toArray) {
     for (let i of fromArray) {
         toArray.push(i.name);
     }
 }
 
+// copies and transforms all the concepts from one array to another (used as data for CanvasJS) 
 function conceptsToArray(fromArray, toArray) {
     for (let i of fromArray) {
         let temp = {};
@@ -118,6 +107,7 @@ function conceptsToArray(fromArray, toArray) {
     }
 }
 
+// copies and transforms a custom number of concepts from one array to another (used as data for CanvasJS) 
 function conceptsToArrayCustomSize(fromArray, toArray, size, divider) {
     for (let i = 0; i < Math.floor(size / divider); i++) {
         let temp = {};
@@ -125,4 +115,13 @@ function conceptsToArrayCustomSize(fromArray, toArray, size, divider) {
         temp.label = fromArray[i].name;
         toArray.push(temp);
     }
+}
+
+// addes classes to a pic object onload (if width > height)
+function picClasses(pic, option1, option2) {
+    pic.onload = function () {
+        if (this.width > this.height) {
+            pic.className = option1;
+        } else pic.className = option2;
+    };
 }
