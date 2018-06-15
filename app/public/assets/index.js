@@ -4,7 +4,7 @@ let picURL;
 let reqData = {};
 let ings = {};
 let ingArray = [];
-let displayArray = [];
+let allConcepts = [];
 
 $(function () {
     // changes the logo text size based on the screen size
@@ -41,6 +41,8 @@ $(function () {
                 console.log(reqData);
                 if (resData) {
                     ings = resData;
+                    conceptsToArray(ings.concepts, allConcepts);
+                    console.log('​allConcepts', allConcepts);
                     if (screenSize < 667) {
                         conceptsToArrayCustomSize(ings.concepts, ingArray, ings.concepts.length, 2);
                     } else {
@@ -102,7 +104,7 @@ $(function () {
 }); //END OF $
 
 
-function pushConceptsToArray(fromArray, toArray) {
+function conceptsToArray(fromArray, toArray) {
     for (let i of fromArray) {
         let temp = {};
         temp.y = parseFloat(i.value * 100);
