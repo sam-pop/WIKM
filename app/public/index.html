@@ -21,41 +21,62 @@
         .cloudinary-button:hover {
             background: linear-gradient(to bottom, darkred 0%, darkred 100%);
         }
+
+        nav {
+            background-color: rgb(24, 24, 24);
+        }
     </style>
 </head>
 
 <!-- ##################################### Body ##################################### -->
 
 <body>
-    <!-- <div class="container"> -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center"></a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-github" aria-hidden="true"></i>
+                        &nbsp;Github Repo</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+        <li>
+            <a href="#">
+                <i class="fa fa-question-circle" aria-hidden="true"></i>About
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-github" aria-hidden="true"></i>Github Repo</a>
+        </li>
+    </ul>
+
     <div class="row">
-        <div class="col s12">
-            <nav>
-                <div class="nav-wrapper">
-                    <a href="#" class="brand-logo center">Will It Kill Me?</a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-github" aria-hidden="true"></i>
-                                &nbsp;Github Repo</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <div class="col s12 center">
+
         </div>
     </div>
-    <!-- </div> -->
 
 
     <h1>hello</h1>
-    <div class="firstScreen">
+    <div class="firstScreen center">
         <a href="#" id="upload_widget_opener">Capture image</a>
     </div>
 
-    <div class="secondScreen"></div>
+    <div class="secondScreen center">
+
+    </div>
 
 
 
@@ -68,6 +89,15 @@
         let concepts = {};
 
         $(function () {
+            // changes the logo text size based on the screen size
+            if ($(window).width() < 667) {
+                $('.brand-logo').text('WIKM?');
+            } else {
+                $('.brand-logo').text('Will It Kill Me?');
+            }
+            // init materialize side nav for small screens
+            $('.sidenav').sidenav();
+
             // create and init the cloudinary upload widget
             $('#upload_widget_opener').cloudinary_upload_widget({
                     cloud_name: 'samp',
@@ -97,9 +127,15 @@
                             console.log(resData);
                             console.log("####################");
                             console.log(concepts.concepts[0].name);
-                            $('.secondScreen').html(concepts.concepts[0].name);
 
+                            $('.secondScreen').append($('<img>').addClass(
+                                'materialboxed z-depth-2').attr({
+                                'width': '100%', //TODO: CHANGE THIS
+                                'src': reqData.url
+                            }));
+                            $('.materialboxed').materialbox();
 
+                            $('.secondScreen').append(concepts.concepts[0].name);
 
                         }
                     });
