@@ -53,21 +53,26 @@
     </ul>
 
     <!-- Allergy FORM -->
-    <div class="container row allergyForm">
-        <div class="allergy-form">
-            <select multiple="multiple" id="multiselectbox">
-                <option value="" disabled selected>Please choose what are you allergic to</option>
-                <option value="dairy">Dairy</option>
-                <option value="eggs">Eggs</option>
-                <option value="peanuts">Peanuts</option>
-                <option value="treenuts">Tree Nuts</option>
-                <option value="soy">Soy</option>
-                <option value="wheat">Wheat</option>
-                <option value="fish">Fish</option>
-                <option value="shellfish">Shellfish</option>
-                <option value="corn">Corn</option>
-            </select>
+    <div class="smallScreenAllergies">
+        <div class="container row allergyForm">
+            <div class="allergy-form">
+                <select multiple="multiple" id="smallMultiselectbox">
+                    <option value="" disabled selected>Please choose what are you allergic to</option>
+                    <option value="dairy">Dairy</option>
+                    <option value="eggs">Eggs</option>
+                    <option value="peanuts">Peanuts</option>
+                    <option value="treenuts">Tree Nuts</option>
+                    <option value="soy">Soy</option>
+                    <option value="wheat">Wheat</option>
+                    <option value="fish">Fish</option>
+                    <option value="shellfish">Shellfish</option>
+                    <option value="corn">Corn</option>
+                </select>
+            </div>
         </div>
+    </div>
+    <div class="largeScreenAllergies">
+        largeMultiselectbox
     </div>
 
 
@@ -87,7 +92,7 @@
     <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 
     <!-- ##################################### JS ##################################### -->
-
+    <script src="./allergens.js"></script>
     <script src="./index.js"></script>
 
 </body>
