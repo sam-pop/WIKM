@@ -25,6 +25,20 @@
         nav {
             background-color: rgb(24, 24, 24);
         }
+
+        .hPic {
+            width: 80%;
+        }
+
+        .vPic {
+            width: 50%;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
     </style>
 </head>
 
@@ -73,8 +87,13 @@
     <div class="firstScreen center">
         <a href="#" id="upload_widget_opener">Capture image</a>
     </div>
-
-    <div class="secondScreen center">
+    <div class="row valign center-block">
+        <div class="col s12">
+            <div class="userPic valign center-block">
+            </div>
+        </div>
+    </div>
+    <div class="secondScreen">
 
     </div>
 
@@ -86,7 +105,7 @@
         // variables
         let picURL;
         let reqData = {};
-        let concepts = {};
+        let ings = {};
 
         $(function () {
             // changes the logo text size based on the screen size
@@ -122,20 +141,32 @@
                     $.post('/api', reqData, function (resData) {
                         console.log(reqData);
                         if (resData) {
-                            concepts = resData;
+                            ings = resData;
                             console.log("####################");
                             console.log(resData);
                             console.log("####################");
-                            console.log(concepts.concepts[0].name);
+                            console.log(ings.concepts[0].name);
 
-                            $('.secondScreen').append($('<img>').addClass(
-                                'materialboxed z-depth-2').attr({
-                                'width': '100%', //TODO: CHANGE THIS
-                                'src': reqData.url
-                            }));
-                            $('.materialboxed').materialbox();
+                            // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
+                            let pic = new Image();
+                            if ($(window).width() < 667) {
+                                pic.onload = function () {
+                                    if (this.width > this.height) {
+                                        pic.className = 'hPic z-depth-2';
+                                    } else pic.className = 'vPic z-depth-2';
+                                }
+                            } else {
+                                pic.onload = function () {
+                                    if (this.width > this.height) {
+                                        pic.width = 500;
+                                    } else pic.width = 300;
+                                }
+                            }
+                            pic.src = reqData.url;
+                            $('.userPic').append(pic);
 
-                            $('.secondScreen').append(concepts.concepts[0].name);
+                            // appends the identified ingredients on screen
+                            $('.secondScreen').append(ings.concepts[0].name); //TODO: this is just the first one, need to be changed to include all
 
                         }
                     });
