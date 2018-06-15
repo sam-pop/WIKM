@@ -39,6 +39,19 @@ img {
     border-color: lightgrey;
     padding-left: 10px;
 }
+
+@media only screen and (max-width: 667px) {
+    .allergyForm {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 667px) {
+    .allergyForm {
+        width: 50%;
+    }
+}
+
 [type="checkbox"]:checked+span:not(.lever):before {
     top: -4px;
     left: -5px;
@@ -55,6 +68,7 @@ img {
     -webkit-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
 }
+
 .select-wrapper input.select-dropdown:focus {
     border-bottom: 1px solid #32373A;
 }
