@@ -16,6 +16,11 @@ $(function () {
     $('.sidenav').sidenav();
     $('select').formSelect();
 
+    // get the user allergies (from the multiple select boxes)
+    let instance = M.FormSelect.getInstance($('select'));
+    let userAllergies = instance.getSelectedValues();
+
+
     // create and init the cloudinary upload widget
     $('#upload_widget_opener').cloudinary_upload_widget({
             cloud_name: 'samp',
