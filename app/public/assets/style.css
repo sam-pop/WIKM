@@ -11,7 +11,7 @@ body {
 }
 
 .cloudinary-button:hover {
-    background: linear-gradient(to bottom, #32373A 0%, #32373A 100%);
+    background: linear-gradient(to bottom, rgb(93, 102, 107) 0%, #32373A 100%);
 }
 
 nav {
@@ -30,4 +30,31 @@ img {
     display: block;
     margin-left: auto;
     margin-right: auto
+}
+
+.left {
+    border: 0;
+    border-left: 1px;
+    border-style: solid;
+    border-color: lightgrey;
+    padding-left: 10px;
+}
+[type="checkbox"]:checked+span:not(.lever):before {
+    top: -4px;
+    left: -5px;
+    width: 12px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #ff9b05;
+    border-bottom: 2px solid #ff9b05;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid #32373A;
 }
