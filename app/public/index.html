@@ -146,7 +146,7 @@
                             ings = resData;
                             for (let i of ings.concepts) {
                                 let temp = {};
-                                temp.y = parseFloat(i.value);
+                                temp.y = parseFloat(i.value * 100);
                                 temp.label = i.name;
                                 ingArray.push(temp);
                             }
@@ -185,10 +185,10 @@
                             animationEnabled: true,
                             theme: "dark2", // "light1", "light2", "dark1", "dark2"
                             title: {
-                                text: "Ingredients found:"
+                                text: "This is what we've found:"
                             },
                             axisY: {
-                                title: "Probabily (out of 1.0)"
+                                title: "How sure we are %"
                             },
                             data: [{
                                 type: "column",
