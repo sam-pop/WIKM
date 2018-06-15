@@ -116,6 +116,7 @@ $(function () {
                 }
             });
             $('.firstScreen').hide(); // hides the capture/upload image button
+            $('.description').hide();
             $('.smallScreenAllergies').hide();
             $('.largeScreenAllergies').hide();
 

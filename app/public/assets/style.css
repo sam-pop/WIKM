@@ -82,3 +82,7 @@ img {
 .select-wrapper input.select-dropdown:focus {
     border-bottom: 1px solid #32373A;
 }
+
+.userPic {
+    margin-top: 3%;
+}
