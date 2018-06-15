@@ -11,10 +11,19 @@
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
     <script src="https://widget.cloudinary.com/global/all.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans|Cabin+Sketch" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <style>
+        body {
+            font-family: 'PT Sans', sans-serif;
+        }
+
+        .brand-logo {
+            font-family: 'Cabin Sketch', cursive;
+        }
+
         .cloudinary-button {
             background: linear-gradient(to bottom, #32373A 0%, rgb(93, 102, 107) 100%);
         }
@@ -112,9 +121,9 @@
         $(function () {
             // changes the logo text size based on the screen size
             if ($(window).width() < 667) {
-                $('.brand-logo').text('WIKM?');
+                $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>WIKM?");
             } else {
-                $('.brand-logo').text('Will It Kill Me?');
+                $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>Will It Kill Me?");
             }
             // init materialize side nav for small screens
             $('.sidenav').sidenav();
