@@ -62,13 +62,28 @@ $(function () {
                                     for (let i of allergen.data) {
                                         if (i == concept) {
                                             allergensFound.push(i);
-                                            console.log(i);
+                                            console.log("allergen found: " + i);
                                         }
                                     }
 
                                 }
                             }
                         }
+                    }
+                    if (allergensFound.length === 0) {
+                        swal({
+                            title: "Great news!",
+                            text: "It will PROBABLY NOT kill you.",
+                            icon: "success",
+                            button: "Let's eat :)",
+                        });
+                    } else {
+                        swal({
+                            title: "Bad news...",
+                            text: "It will PROBABLY kill you.",
+                            icon: "error",
+                            button: "I'll pick something else",
+                        });
                     }
 
                     // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
