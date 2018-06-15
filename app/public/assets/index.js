@@ -1,10 +1,9 @@
 // variables
 const screenSize = $(window).width();
-let picURL;
+let picURL; // holds the user uploaded picture URL
 let reqData = {};
-let ings = {};
-let ingArray = [];
-let allConcepts = [];
+let ingArray = []; // holds an array of the concepts objects
+let allConcepts = []; // holds an array of all the concepts labels
 
 $(function () {
     // changes the logo text size based on the screen size
@@ -40,13 +39,12 @@ $(function () {
             $.post('/api', reqData, function (resData) {
                 console.log(reqData);
                 if (resData) {
-                    ings = resData;
-                    conceptsToArray(ings.concepts, allConcepts);
+                    conceptLabels(resData.concepts, allConcepts);
                     console.log('​allConcepts', allConcepts);
                     if (screenSize < 667) {
-                        conceptsToArrayCustomSize(ings.concepts, ingArray, ings.concepts.length, 2);
+                        conceptsToArrayCustomSize(resData.concepts, ingArray, resData.concepts.length, 2);
                     } else {
-                        conceptsToArray(ings.concepts, ingArray);
+                        conceptsToArray(resData.concepts, ingArray);
                     }
                     console.log("####################");
                     console.log(ingArray);
@@ -71,7 +69,7 @@ $(function () {
                     $('.userPic').append(pic);
 
                     // appends the identified ingredients on screen
-                    $('.secondScreen').append(ings.concepts[0].name); //TODO: this is just the first one, need to be changed to include all
+                    $('.secondScreen').append(resData.concepts[0].name); //TODO: this is just the first one, need to be changed to include all
 
                 }
             });
@@ -103,6 +101,13 @@ $(function () {
         });
 }); //END OF $
 
+
+
+function conceptLabels(fromArray, toArray) {
+    for (let i of fromArray) {
+        toArray.push(i.name);
+    }
+}
 
 function conceptsToArray(fromArray, toArray) {
     for (let i of fromArray) {
