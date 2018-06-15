@@ -68,10 +68,6 @@ $(function () {
                     }
                     pic.src = reqData.url;
                     $('.userPic').append(pic);
-
-                    // appends the identified ingredients on screen
-                    $('.secondScreen').append(resData.concepts[0].name); //TODO: this is just the first one, need to be changed to include all
-
                 }
             });
             $('.firstScreen').hide(); // hides the capture/upload image button
