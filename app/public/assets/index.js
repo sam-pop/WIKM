@@ -49,9 +49,17 @@ $(function () {
                     // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
                     let pic = new Image();
                     if (screenSize < 667) {
-                        picClasses(pic, "hPic z-depth-2", "vPic z-depth-2");
+                        pic.onload = function () {
+                            if (this.width > this.height) {
+                                pic.className = 'hPic z-depth-2';
+                            } else pic.className = 'vPic z-depth-2';
+                        };
                     } else {
-                        picClasses(pic, 500, 300);
+                        pic.onload = function () {
+                            if (this.width > this.height) {
+                                pic.width = 500;
+                            } else pic.width = 300;
+                        };
                     }
                     pic.src = reqData.url;
                     $('.userPic').append(pic);
@@ -115,13 +123,4 @@ function conceptsToArrayCustomSize(fromArray, toArray, size, divider) {
         temp.label = fromArray[i].name;
         toArray.push(temp);
     }
-}
-
-// addes classes to a pic object onload (if width > height)
-function picClasses(pic, option1, option2) {
-    pic.onload = function () {
-        if (this.width > this.height) {
-            pic.className = option1;
-        } else pic.className = option2;
-    };
 }
