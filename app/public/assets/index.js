@@ -14,6 +14,8 @@ $(function () {
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>WIKM?");
         $('.smallScreenAllergies').show();
     } else {
+        $('.description').addClass('container');
+        $('.card').css('padding', '3%');
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>Will It Kill Me?");
         $('.largeScreenAllergies').show();
     }
@@ -70,6 +72,7 @@ $(function () {
                             }
                         }
                     }
+                    // shows an alert and on screen message if no known allergens were found
                     if (allergensFound.length === 0) {
                         swal({
                             title: "Great news!",
@@ -77,13 +80,20 @@ $(function () {
                             icon: "success",
                             button: "Let's eat :)",
                         });
-                    } else {
+                        $('.userMsg').append($('<h2>').css('color', 'green').addClass('center').text("YOU\'RE SAFE!"));
+                    } else { // shows an alert and on screen message if known allergens were found
                         swal({
                             title: "Bad news...",
                             text: "It will PROBABLY kill you.",
                             icon: "error",
-                            button: "I'll pick something else",
+                            dangerMode: true,
+                            button: "I'll eat something else",
                         });
+                        $('.userMsg').append($('<h2>').css({
+                            'color': 'red',
+                            'font-weight': 'bold'
+                        }).addClass('center').text("SPIT IT OUT!"));
+
                     }
 
                     // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
