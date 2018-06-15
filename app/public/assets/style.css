@@ -1,0 +1,33 @@
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.brand-logo {
+    font-family: 'Cabin Sketch', cursive;
+}
+
+.cloudinary-button {
+    background: linear-gradient(to bottom, #32373A 0%, rgb(93, 102, 107) 100%);
+}
+
+.cloudinary-button:hover {
+    background: linear-gradient(to bottom, #32373A 0%, #32373A 100%);
+}
+
+nav {
+    background-color: #32373A;
+}
+
+.hPic {
+    width: 80%;
+}
+
+.vPic {
+    width: 50%;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
