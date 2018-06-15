@@ -1,5 +1,10 @@
 body {
     font-family: 'PT Sans', sans-serif;
+    background-color: rgb(252, 252, 252);
+}
+
+.pickAllegiesMsg {
+    color: #ff9b05;
 }
 
 .brand-logo {
@@ -15,6 +20,11 @@ body {
 }
 
 nav {
+    background-color: #32373A;
+}
+
+.card {
+    margin-top: 10%;
     background-color: #32373A;
 }
 
