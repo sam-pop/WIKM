@@ -1,38 +1,38 @@
 const allergens = [{
         name: 'dairy',
-        data: []
+        data: ["milk", "cheese", "chedder", "mozzarella", "cream", "dairy", "dairy product", "brie", "gouda"]
     },
     {
         name: 'eggs',
-        data: []
+        data: ["egg", "mayonnaise", "hollandaise", "hollandaise sauce", "cake"]
     },
     {
         name: 'peanuts',
-        data: []
+        data: ["nut", "peanut"]
     },
     {
         name: 'treenuts',
-        data: []
+        data: ["nut", "almond", "peanut", "cashew", "hazelnut", "pistachio", "pine nut", "peacan"]
     },
     {
         name: 'soy',
-        data: []
+        data: ["edamame", "soy beans", "soy nut", "tofu"]
     },
     {
         name: 'wheat',
-        data: []
+        data: ["tortilla", "bread", "wheat", "pastry","dough", "bun", "cereal", "flour", "doughnut", "bread rolls", "crust", "brioche", "rye", "croissant", "bagel", "sourdough bread", "cake", "french bread", "yeast", "taco"]
     },
     {
         name: 'fish',
-        data: []
+        data: ["fish", "salmon", "tuna", "smoked salmon", "lox", "sashimi", "sushi", "seafood", "fillet"]
     },
     {
         name: 'shellfish',
-        data: []
+        data: ["shellfish", "crab", "shrimp", "lobster", "prawn", "mussel", "clam", "crayfish", "scampi", "sushi","seafood"]
     },
     {
         name: 'corn',
-        data: []
+        data: ["corn", "tortilla", "taco"]
     }
 
 ];
