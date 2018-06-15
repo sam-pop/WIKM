@@ -16,6 +16,11 @@ $(function () {
     $('.sidenav').sidenav();
     $('select').formSelect();
 
+    // get the user allergies (from the multiple select boxes)
+    let instance = M.FormSelect.getInstance($('select'));
+    let userAllergies = instance.getSelectedValues();
+
+
     // create and init the cloudinary upload widget
     $('#upload_widget_opener').cloudinary_upload_widget({
             cloud_name: 'samp',
@@ -46,6 +51,8 @@ $(function () {
                         conceptsToArray(resData.concepts, ingArray);
                     }
 
+                    //userAllergies allConcepts
+
                     // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
                     let pic = new Image();
                     if (screenSize < 667) {
@@ -63,10 +70,6 @@ $(function () {
                     }
                     pic.src = reqData.url;
                     $('.userPic').append(pic);
-
-                    // appends the identified ingredients on screen
-                    $('.secondScreen').append(resData.concepts[0].name); //TODO: this is just the first one, need to be changed to include all
-
                 }
             });
             $('.firstScreen').hide(); // hides the capture/upload image button
@@ -92,7 +95,7 @@ $(function () {
                     }]
                 });
                 chart.render();
-            }, 1000);
+            }, 1500);
 
         });
 }); //END OF $

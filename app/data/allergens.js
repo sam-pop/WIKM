@@ -1,0 +1,40 @@
+const allergens = [{
+        name: 'dairy',
+        data: ["milk", "cheese", "chedder", "mozzarella", "cream", "dairy", "dairy product", "brie", "gouda"]
+    },
+    {
+        name: 'eggs',
+        data: ["egg", "mayonnaise", "hollandaise", "hollandaise sauce", "cake"]
+    },
+    {
+        name: 'peanuts',
+        data: ["nut", "peanut"]
+    },
+    {
+        name: 'treenuts',
+        data: ["nut", "almond", "peanut", "cashew", "hazelnut", "pistachio", "pine nut", "peacan"]
+    },
+    {
+        name: 'soy',
+        data: ["edamame", "soy beans", "soy nut", "tofu"]
+    },
+    {
+        name: 'wheat',
+        data: ["tortilla", "bread", "wheat", "pastry","dough", "bun", "cereal", "flour", "doughnut", "bread rolls", "crust", "brioche", "rye", "croissant", "bagel", "sourdough bread", "cake", "french bread", "yeast", "taco"]
+    },
+    {
+        name: 'fish',
+        data: ["fish", "salmon", "tuna", "smoked salmon", "lox", "sashimi", "sushi", "seafood", "fillet"]
+    },
+    {
+        name: 'shellfish',
+        data: ["shellfish", "crab", "shrimp", "lobster", "prawn", "mussel", "clam", "crayfish", "scampi", "sushi","seafood"]
+    },
+    {
+        name: 'corn',
+        data: ["corn", "tortilla", "taco"]
+    }
+
+];
+
+module.exports = allergens;
