@@ -113,6 +113,7 @@
     <!-- ##################################### JavaScript ##################################### -->
     <script>
         // variables
+        const screenSize = $(window).width();
         let picURL;
         let reqData = {};
         let ings = {};
@@ -120,7 +121,7 @@
 
         $(function () {
             // changes the logo text size based on the screen size
-            if ($(window).width() < 667) {
+            if (screenSize < 667) {
                 $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>WIKM?");
             } else {
                 $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>Will It Kill Me?");
@@ -153,11 +154,20 @@
                         console.log(reqData);
                         if (resData) {
                             ings = resData;
-                            for (let i of ings.concepts) {
-                                let temp = {};
-                                temp.y = parseFloat(i.value * 100);
-                                temp.label = i.name;
-                                ingArray.push(temp);
+                            if (screenSize < 667) {
+                                for (let i = 0; i < Math.floor(ings.concepts.length / 2); i++) {
+                                    let temp = {};
+                                    temp.y = parseFloat(ings.concepts[i].value * 100);
+                                    temp.label = ings.concepts[i].name;
+                                    ingArray.push(temp);
+                                }
+                            } else {
+                                for (let i of ings.concepts) {
+                                    let temp = {};
+                                    temp.y = parseFloat(i.value * 100);
+                                    temp.label = i.name;
+                                    ingArray.push(temp);
+                                }
                             }
                             console.log("####################");
                             console.log(ingArray);
@@ -165,7 +175,7 @@
 
                             // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
                             let pic = new Image();
-                            if ($(window).width() < 667) {
+                            if (screenSize < 667) {
                                 pic.onload = function () {
                                     if (this.width > this.height) {
                                         pic.className = 'hPic z-depth-2';
@@ -187,14 +197,15 @@
                         }
                     });
                     $('.firstScreen').hide(); // hides the capture/upload image button
+
                     setTimeout(function () {
-
-
+                        // CanvasJS
                         var chart = new CanvasJS.Chart("chartContainer", {
                             animationEnabled: true,
                             theme: "dark2", // "light1", "light2", "dark1", "dark2"
                             title: {
-                                text: "This is what we've found:"
+                                text: "This is what we've found:",
+                                fontFamily: "Cabin Sketch"
                             },
                             axisY: {
                                 title: "How sure we are %"
