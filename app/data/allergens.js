@@ -4,7 +4,7 @@ const allergens = [{
     },
     {
         name: 'eggs',
-        data: ["egg", "mayonnaise", "hollandaise", "hollandaise sauce", "cake"]
+        data: ["egg", "mayonnaise", "hollandaise", "hollandaise sauce", "cake", "pie", "pasta"]
     },
     {
         name: 'peanuts',
@@ -20,7 +20,7 @@ const allergens = [{
     },
     {
         name: 'wheat',
-        data: ["tortilla", "bread", "wheat", "pastry","dough", "bun", "cereal", "flour", "doughnut", "bread rolls", "crust", "brioche", "rye", "croissant", "bagel", "sourdough bread", "cake", "french bread", "yeast", "taco"]
+        data: ["tortilla", "bread", "wheat", "pastry", "dough", "bun", "cereal", "flour", "doughnut", "bread rolls", "crust", "brioche", "rye", "croissant", "bagel", "sourdough bread", "cake", "french bread", "yeast", "taco", "toast", "pizza", "pie", "pasta"]
     },
     {
         name: 'fish',
@@ -28,7 +28,7 @@ const allergens = [{
     },
     {
         name: 'shellfish',
-        data: ["shellfish", "crab", "shrimp", "lobster", "prawn", "mussel", "clam", "crayfish", "scampi", "sushi","seafood"]
+        data: ["shellfish", "crab", "shrimp", "lobster", "prawn", "mussel", "clam", "crayfish", "scampi", "sushi", "seafood"]
     },
     {
         name: 'corn',
@@ -37,4 +37,4 @@ const allergens = [{
 
 ];
 
-module.exports = allergens;
+// module.exports = allergens;

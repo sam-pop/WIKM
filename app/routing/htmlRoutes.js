@@ -13,6 +13,9 @@ module.exports = function (app) {
     app.get('/index.js', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/assets/index.js'));
     });
+    app.get('/allergens.js', function (req, res) {
+        res.sendFile(path.join(__dirname, '../data/allergens.js'));
+    });
     app.get('/about', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/about.html'));
     });

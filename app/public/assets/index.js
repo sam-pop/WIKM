@@ -4,22 +4,22 @@ let picURL; // holds the user uploaded picture URL
 let reqData = {};
 let ingArray = []; // holds an array of the concepts objects
 let allConcepts = []; // holds an array of all the concepts labels
+let allergensFound = [];
 
 $(function () {
+    // $('.smallScreenAllergies').hide(); //TODO: uncomment
+    $('.largeScreenAllergies').hide();
     // changes the logo text size based on the screen size
     if (screenSize < 667) {
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>WIKM?");
+        $('.smallScreenAllergies').show();
     } else {
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>Will It Kill Me?");
+        $('.largeScreenAllergies').show();
     }
     // init materialize components
     $('.sidenav').sidenav();
     $('select').formSelect();
-
-    // get the user allergies (from the multiple select boxes)
-    let instance = M.FormSelect.getInstance($('select'));
-    let userAllergies = instance.getSelectedValues();
-
 
     // create and init the cloudinary upload widget
     $('#upload_widget_opener').cloudinary_upload_widget({
@@ -41,6 +41,9 @@ $(function () {
             }
             picURL = result[0].url;
             reqData.url = picURL;
+            // get the user allergies (from the multiple select boxes)
+            let instance = M.FormSelect.getInstance($('select'));
+            let userAllergies = instance.getSelectedValues();
             // POST to api
             $.post('/api', reqData, function (resData) {
                 if (resData) {
@@ -52,6 +55,21 @@ $(function () {
                     }
 
                     //userAllergies allConcepts
+                    for (let allergy of userAllergies) {
+                        for (let allergen of allergens) {
+                            if (allergen.name == allergy) {
+                                for (let concept of allConcepts) {
+                                    for (let i of allergen.data) {
+                                        if (i == concept) {
+                                            allergensFound.push(i);
+                                            console.log(i);
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    }
 
                     // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
                     let pic = new Image();
@@ -73,6 +91,9 @@ $(function () {
                 }
             });
             $('.firstScreen').hide(); // hides the capture/upload image button
+            $('.smallScreenAllergies').hide();
+            $('.largeScreenAllergies').hide();
+
 
             setTimeout(function () {
                 // CanvasJS
