@@ -6,7 +6,6 @@ let ingArray = []; // holds an array of the concepts objects
 let allConcepts = []; // holds an array of all the concepts labels
 
 $(function () {
-    console.log(allergens);
     // changes the logo text size based on the screen size
     if (screenSize < 667) {
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>WIKM?");
