@@ -26,7 +26,7 @@ $(function () {
             theme: "white",
             button_caption: "Get Started",
             show_powered_by: false,
-            stylesheet: "#cloudinary-navbar .source.active {border-bottom: 6px solid #32373A;} #cloudinary-widget .button, #cloudinary-widget .button.small_button {background:linear-gradient(to bottom, darkgrey 0%, #32373A 100%)} #cloudinary-widget .button:hover, #cloudinary-widget .button.small_button:hover, #cloudinary-widget .upload_button_holder:hover .button {background: #32373A;} #cloudinary-widget .button, #cloudinary-widget .button.small_button {background:linear-gradient(to bottom, darkgrey 0%, #32373A 100%)} #cloudinary-overlay.modal {background-color: rgba(0, 0, 0, 0.7);}"
+            stylesheet: "#cloudinary-navbar .source.active {border-bottom: 6px solid #32373A;} #cloudinary-widget .button, #cloudinary-widget .button.small_button {background:linear-gradient(to bottom, #32373A 0%, rgb(93, 102, 107) 100%)} #cloudinary-widget .button:hover, #cloudinary-widget .button.small_button:hover, #cloudinary-widget .upload_button_holder:hover .button {background:linear-gradient(to bottom, rgb(93, 102, 107) 0%, #32373A 100%)} #cloudinary-widget .button, #cloudinary-widget .button.small_button {background:linear-gradient(to bottom, darkgrey 0%, #32373A 100%)} #cloudinary-overlay.modal {background-color: rgba(0, 0, 0, 0.7);}"
         },
         function (error, result) {
             // error function
