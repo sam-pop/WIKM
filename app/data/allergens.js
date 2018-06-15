@@ -1,4 +1,4 @@
-var allergens = [{
+const allergens = [{
         name: 'dairy',
         data: []
     },
