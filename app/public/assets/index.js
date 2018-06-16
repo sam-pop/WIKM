@@ -9,6 +9,8 @@ let allergensFound = [];
 $(function () {
     // $('.smallScreenAllergies').hide(); //TODO: uncomment
     $('.largeScreenAllergies').hide();
+    $('.secondScreen').hide();
+
     // changes the logo text size based on the screen size
     if (screenSize < 667) {
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>WIKM?");
@@ -93,8 +95,8 @@ $(function () {
                             'color': 'red',
                             'font-weight': 'bold'
                         }).addClass('center').text("SPIT IT OUT!"));
-
                     }
+                    $('.secondScreen').addClass('animated zoomIn').show();
 
                     // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
                     let pic = new Image();
