@@ -95,6 +95,7 @@ $(function () {
                             'color': 'red',
                             'font-weight': 'bold'
                         }).addClass('center').text("SPIT IT OUT!"));
+                        $('.userMsg').append($('<p>').addClass('center').html("The following ingredients <b>may be harmful</b> to you:<br>" + "<h5>" + allergensFound.toString() + "</h5>"));
                     }
                     $('.secondScreen').addClass('animated zoomIn').show();
 
