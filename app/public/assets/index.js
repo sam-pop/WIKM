@@ -95,7 +95,7 @@ $(function () {
                             'color': 'red',
                             'font-weight': 'bold'
                         }).addClass('center').text("SPIT IT OUT!"));
-                        let strToDisplay = "";
+                        let allergensToDisplayOnSmallScreens = "";
                         if (screenSize < 667) {
                             for (let i = 0; i < allergensFound.length; i++) {
                                 if ((i !== 0) && (i % 4 === 0)) {
@@ -106,7 +106,7 @@ $(function () {
                                     else strToDisplay += allergensFound[i] + ", ";
                                 }
                             }
-                            $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + strToDisplay));
+                            $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensToDisplayOnSmallScreens));
                         } else
                             $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensFound.toString()));
                     }
