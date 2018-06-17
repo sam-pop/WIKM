@@ -1,17 +1,19 @@
 // variables
 const screenSize = $(window).width();
+
 let picURL; // holds the user uploaded picture URL
 let reqData = {};
 let ingArray = []; // holds an array of the concepts objects
 let allConcepts = []; // holds an array of all the concepts labels
 let allergensFound = [];
 
+
 $(function () {
     // $('.smallScreenAllergies').hide(); //TODO: uncomment
     $('.largeScreenAllergies').hide();
     $('.secondScreen').hide();
 
-    // changes the logo text size based on the screen size
+    // changes the page appearance based on the screen size 
     if (screenSize < 667) {
         $('.brand-logo').html("<i class='material-icons'>thumbs_up_down</i>WIKM?");
         $('.smallScreenAllergies').show();
@@ -43,6 +45,7 @@ $(function () {
                 console.log(error);
                 return;
             }
+            // on success:
             picURL = result[0].url;
             reqData.url = picURL;
             // get the user allergies (from the multiple select boxes)
@@ -52,24 +55,23 @@ $(function () {
             $.post('/api', reqData, function (resData) {
                 if (resData) {
                     conceptLabels(resData.concepts, allConcepts);
+                    // optimize for screen size
                     if (screenSize < 667) {
                         conceptsToArrayCustomSize(resData.concepts, ingArray, resData.concepts.length, 2);
                     } else {
                         conceptsToArray(resData.concepts, ingArray);
                     }
-
-                    //userAllergies allConcepts
-                    for (let allergy of userAllergies) {
-                        for (let allergen of allergens) {
+                    // compares the found concepts to the user allergies and the allergies data, if a match is founds its pushed into an array
+                    for (let allergy of userAllergies) { // iterates over the user allergies
+                        for (let allergen of allergens) { // iterates over the allergens data
                             if (allergen.name == allergy) {
-                                for (let concept of allConcepts) {
+                                for (let concept of allConcepts) { // iterate over the returned concepts (Clarafai API)
                                     for (let i of allergen.data) {
                                         if (i == concept) {
                                             allergensFound.push(i);
                                             console.log("allergen found: " + i);
                                         }
                                     }
-
                                 }
                             }
                         }
@@ -96,48 +98,39 @@ $(function () {
                             'font-weight': 'bold'
                         }).addClass('center').text("SPIT IT OUT!"));
                         let allergensToDisplayOnSmallScreens = "";
+                        // optimize the allergens found list display / screen size
                         if (screenSize < 667) {
                             for (let i = 0; i < allergensFound.length; i++) {
                                 if ((i !== 0) && (i % 4 === 0)) {
-                                    strToDisplay += allergensFound[i] + ",<br>";
+                                    allergensToDisplayOnSmallScreens += allergensFound[i] + ",<br>";
                                 } else {
                                     if (i === allergensFound.length - 1)
-                                        strToDisplay += allergensFound[i] + ".";
-                                    else strToDisplay += allergensFound[i] + ", ";
+                                        allergensToDisplayOnSmallScreens += allergensFound[i] + ".";
+                                    else allergensToDisplayOnSmallScreens += allergensFound[i] + ", ";
                                 }
                             }
                             $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensToDisplayOnSmallScreens));
                         } else
                             $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensFound.toString()));
                     }
+                    // page display animation
                     $('.secondScreen').addClass('animated zoomIn').show();
 
-                    // create a new Image obj with dimentions that depend on the img orientation and the displayed screen size
+                    // create a new Image obj with dimentions that depend on the uploaded image orientation and the user screen size
                     let pic = new Image();
                     if (screenSize < 667) {
                         pic.onload = function () {
-                            if (this.width > this.height) {
-                                pic.className = 'hPic z-depth-2';
-                            } else pic.className = 'vPic z-depth-2';
+                            (this.width > this.height) ? pic.className = 'hPic z-depth-2': pic.className = 'vPic z-depth-2';
                         };
                     } else {
                         pic.onload = function () {
-                            if (this.width > this.height) {
-                                pic.width = 500;
-                            } else pic.width = 300;
+                            (this.width > this.height) ? pic.width = 500: pic.width = 300;
                         };
                     }
                     pic.src = reqData.url;
                     $('.userPic').append(pic);
                 }
-            });
-            $('.firstScreen').hide(); // hides the capture/upload image button
-            $('.description').hide();
-            $('.smallScreenAllergies').hide();
-            $('.largeScreenAllergies').hide();
-
-
-            setTimeout(function () {
+            }).then(function () {
                 // CanvasJS
                 var chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
@@ -158,8 +151,12 @@ $(function () {
                     }]
                 });
                 chart.render();
-            }, 1500);
-
+            });
+            // hides unnecessary page elements
+            $('.firstScreen').hide(); // hides the capture/upload image button
+            $('.description').hide();
+            $('.smallScreenAllergies').hide();
+            $('.largeScreenAllergies').hide();
         });
 }); //END OF $
 
