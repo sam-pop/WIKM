@@ -7,6 +7,12 @@ module.exports = function (app) {
     app.get('/', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/index.html'));
     });
+
+    app.get('/about', function (req, res) {
+        res.sendFile(path.join(__dirname, '../public/about.html'));
+    });
+
+    // auxiliary files access routes
     app.get('/style.css', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/assets/style.css'));
     });
@@ -15,9 +21,6 @@ module.exports = function (app) {
     });
     app.get('/allergens.js', function (req, res) {
         res.sendFile(path.join(__dirname, '../data/allergens.js'));
-    });
-    app.get('/about', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/about.html'));
     });
 
 
