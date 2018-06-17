@@ -100,8 +100,11 @@ $(function () {
                             for (let i = 0; i < allergensFound.length; i++) {
                                 if ((i !== 0) && (i % 4 === 0)) {
                                     strToDisplay += allergensFound[i] + ",<br>";
-                                } else
-                                    (i === allergensFound.length - 1) ? (strToDisplay += allergensFound[i] + ".") : (strToDisplay += allergensFound[i] + ", ");
+                                } else {
+                                    if (i === allergensFound.length - 1)
+                                        strToDisplay += allergensFound[i] + ".";
+                                    else strToDisplay += allergensFound[i] + ", ";
+                                }
                             }
                             $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + strToDisplay));
                         } else
