@@ -105,7 +105,7 @@ $(function () {
                         let allergensToDisplay = "";
                         // optimize the allergens found list (displayed in lines of 4 items) 
                         for (let i = 0; i < allergensFound.length; i++) {
-                            if ((i !== 0) && (i % 4 === 0)) {
+                            if ((i !== 0) && (i % 5 === 0)) {
                                 allergensToDisplay += allergensFound[i] + ",<br>";
                             } else {
                                 if (i === allergensFound.length - 1)
@@ -113,22 +113,16 @@ $(function () {
                                 else allergensToDisplay += allergensFound[i] + ", ";
                             }
                         }
-                        $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensToDisplay));
+                        $('.userMsgIng').append($('<p>').addClass('center').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensToDisplay));
                     }
                     // page display animation
                     $('.secondScreen').addClass('animated zoomIn').show();
 
                     // create a new Image obj with dimentions that depend on the uploaded image orientation and the user screen size
                     let pic = new Image();
-                    if (screenSize < 667) {
-                        pic.onload = function () {
-                            (this.width > this.height) ? pic.className = 'hPic z-depth-2': pic.className = 'vPic z-depth-2';
-                        };
-                    } else {
-                        pic.onload = function () {
-                            (this.width > this.height) ? pic.width = 500: pic.width = 300;
-                        };
-                    }
+                    pic.onload = function () {
+                        (this.width > this.height) ? pic.className = 'hPic z-depth-2': pic.className = 'vPic z-depth-2';
+                    };
                     pic.src = reqData.url;
                     $('.userPic').append(pic);
                 }
