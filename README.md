@@ -7,6 +7,7 @@
 * [What we used](#tech)
 * [Team members](#team-members)
 * [Demo](#demo)
+* [Disclaimer](#dis)
 
 ## <a name="dec"></a> Project description
 
@@ -55,3 +56,7 @@ https://pacific-savannah-73860.herokuapp.com/
 Mobile Version:
 
 [![Screenshot mobile](https://s8.postimg.cc/fno3jnpyt/image.jpg)](https://pacific-savannah-73860.herokuapp.com/)
+
+## <a name="dis"></a>Disclaimer
+
+Please DO NOT consume any food or make any decisions about foods containing allergens based solely on this app recommendations.
