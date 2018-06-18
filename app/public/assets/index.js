@@ -140,7 +140,7 @@ $(function () {
                 // CanvasJS
                 var chart = new CanvasJS.Chart("chartContainer", {
                     animationEnabled: true,
-                    theme: "dark2", // "light1", "light2", "dark1", "dark2"
+                    theme: "light2", // "light1", "light2", "dark1", "dark2"
                     title: {
                         text: "This is what we've found:",
                         fontFamily: "Cabin Sketch"

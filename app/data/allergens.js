@@ -1,6 +1,6 @@
 const allergens = [{
         name: 'dairy',
-        data: ["milk", "cheese", "chedder", "mozzarella", "cream", "dairy", "dairy product", "brie", "gouda"]
+        data: ["milk", "cheese", "chedder", "mozzarella", "cream", "dairy", "dairy product", "brie", "gouda", "tortellini", "ravioli", "parmesan"]
     },
     {
         name: 'eggs',
@@ -20,7 +20,7 @@ const allergens = [{
     },
     {
         name: 'wheat',
-        data: ["tortilla", "bread", "wheat", "pastry", "dough", "bun", "cereal", "flour", "doughnut", "bread rolls", "crust", "brioche", "rye", "croissant", "bagel", "sourdough bread", "cake", "french bread", "yeast", "taco", "toast", "pizza", "pie", "pasta"]
+        data: ["tortilla", "bread", "wheat", "pastry", "dough", "bun", "cereal", "flour", "doughnut", "bread rolls", "crust", "brioche", "rye", "croissant", "bagel", "sourdough bread", "cake", "french bread", "yeast", "taco", "toast", "pizza", "pie", "pasta", "macaroni", "spaghetti", "penne", "tagliatelle", "fettuccine", "tortellini", "sandwich", "angel-hair pasta", "ravioli"]
     },
     {
         name: 'fish',
