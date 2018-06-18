@@ -90,7 +90,7 @@ $(function () {
                             icon: "success",
                             button: "Let's eat :)",
                         });
-                        $('.userMsg').append($('<h2>').css('color', 'green').addClass('center').text("YOU\'RE SAFE!"));
+                        $('.userMsg').append($('<h2>').css('color', 'green').addClass('center').html("<i class='material-icons' style='font-size: 0.8em;'>thumb_up</i>&nbsp;YOU\'RE SAFE!"));
                     } else { // shows an alert and on screen message if known allergens were found
                         swal({
                             title: "Bad news...",
@@ -102,7 +102,7 @@ $(function () {
                         $('.userMsg').append($('<h2>').css({
                             'color': 'red',
                             'font-weight': 'bold'
-                        }).addClass('center').text("SPIT IT OUT!"));
+                        }).addClass('center').html("<i class='material-icons' style='font-size: 0.8em;'>thumb_down</i>&nbsp;SPIT IT OUT!"));
                         let allergensToDisplayOnSmallScreens = "";
                         // optimize the allergens found list display / screen size
                         if (screenSize < 667) {
