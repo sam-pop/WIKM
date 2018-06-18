@@ -9,7 +9,7 @@ let allergensFound = [];
 
 
 $(function () {
-    $('.smallScreenAllergies').hide(); //TODO: uncomment
+    $('.smallScreenAllergies').hide();
     $('.largeScreenAllergies').hide();
     $('.secondScreen').hide();
 
