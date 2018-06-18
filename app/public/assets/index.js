@@ -6,6 +6,7 @@ let reqData = {};
 let ingArray = []; // holds an array of the concepts objects
 let allConcepts = []; // holds an array of all the concepts labels
 let allergensFound = [];
+let userAllergies = [];
 
 
 $(function () {
@@ -51,7 +52,7 @@ $(function () {
             if (screenSize < 667) {
                 // get the user allergies (from the multiple select dropbox)
                 let instance = M.FormSelect.getInstance($('select'));
-                let userAllergies = instance.getSelectedValues();
+                userAllergies = instance.getSelectedValues();
             } else {
                 // get the user allergies (from the checkboxes)
                 for (let i of $("input:checked")) {
