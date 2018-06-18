@@ -5,7 +5,7 @@
 * [Project description](#desc)
 * [How to use](#how)
 * [What we used](#tech)
-* [Team Members](#team-members)
+* [Team members](#team-members)
 * [Demo](#demo)
 
 ## <a name="dec"></a> Project description
@@ -41,7 +41,7 @@ upload_preset=your-upload-preset-for-unsigned-uploads
 
 This full-stack web application web built using HTML5, CSS3, JavaScript, jQuery, [Node.JS](https://nodejs.org/en/), [Express](https://expressjs.com/) (using the [body-parser](https://github.com/expressjs/body-parser) middleware), [dotenv](https://github.com/motdotla/dotenv) module, [Clarifai AI API](https://www.clarifai.com/) (image and video recognition as a service) & [Cloudinary API](https://cloudinary.com/) (cloud media storage).
 
-## <a name="team-members"></a>Team Members
+## <a name="team-members"></a>Team members
 
 * [Martina Caputy](https://github.com/mecaputy/)
 * [Samuel Poplovitch](https://github.com/sam-pop/)
