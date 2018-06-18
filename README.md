@@ -59,4 +59,4 @@ Mobile Version:
 
 ## <a name="dis"></a>Disclaimer
 
-Please DO NOT consume any food or make any decisions about foods containing allergens based solely on this app recommendations. It WILL kill you :)
+Please DO NOT consume any food or make any decisions about foods containing allergens based solely on this app recommendations. Doing so WILL kill you :)
