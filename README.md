@@ -52,8 +52,6 @@ https://pacific-savannah-73860.herokuapp.com/
 
 [![Screenshot](https://s8.postimg.cc/ud4ca3xmd/ezgif.com-optimize.gif)](https://pacific-savannah-73860.herokuapp.com/)
 
-
-
 Mobile Version:
 
-[![Screenshot mobile](https://s8.postimg.cc/wpcc82klx/WIKM_mobile.png)](https://pacific-savannah-73860.herokuapp.com/)
+[![Screenshot mobile](https://s8.postimg.cc/fno3jnpyt/image.jpg)](https://pacific-savannah-73860.herokuapp.com/)
