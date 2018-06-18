@@ -24,7 +24,7 @@ const allergens = [{
     },
     {
         name: 'fish',
-        data: ["fish", "salmon", "tuna", "smoked salmon", "lox", "sashimi", "sushi", "seafood", "fillet"]
+        data: ["fish", "salmon", "tuna", "smoked salmon", "lox", "sashimi", "sushi", "seafood"]
     },
     {
         name: 'shellfish',
