@@ -52,7 +52,6 @@ $(function () {
             let instance = M.FormSelect.getInstance($('select'));
             let userAllergies = instance.getSelectedValues();
             // get the user allergies (from the checkboxes)
-
             for (let i of $("input:checked")) {
                 userAllergies.push(i.value);
             }
