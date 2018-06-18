@@ -25,7 +25,7 @@ https://pacific-savannah-73860.herokuapp.com/
 
 You can also run it locally by using the command `node server.js` from the command line (the web app will run on `http://localhost:3000`).
 
-Please note that in order for the app to run locally you will need to register for an API KEY from the [Clarafai](https://www.clarifai.com/developer/account/keys) & [Cloudinary](https://cloudinary.com/users/register/free) APIs and to create a file named `.env` (in the root directory) and add the following to it, replacing the values with your own API keys:
+Please note that in order for the app to run locally you will need to register for an API KEY from the [Clarifai](https://www.clarifai.com/developer/account/keys) & [Cloudinary](https://cloudinary.com/users/register/free) APIs and to create a file named `.env` (in the root directory) and add the following to it, replacing the values with your own API keys:
 ```
 # Clarifai API
 key=your-api-key
@@ -38,6 +38,8 @@ upload_preset=your-upload-preset-for-unsigned-uploads
 ```
 
 ## <a name="tech"></a>What we used
+
+This full-stack web application web built using HTML5, CSS3, JavaScript, jQuery, [Node.JS](https://nodejs.org/en/), [Express](https://expressjs.com/) (using the [body-parser](https://github.com/expressjs/body-parser) middleware), [dotenv](https://github.com/motdotla/dotenv) module, [Clarifai](https://www.clarifai.com/) machine learning API & [Cloudinary](https://cloudinary.com/) cloud media storage API.
 
 ## <a name="team-members"></a>Team Members
 
