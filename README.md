@@ -17,7 +17,7 @@ The goal of this project is to help people with food allergies identify potentia
 
 We decided to use AI and ML to analyze and classify images of food so we can identify common food allergens in them (with limited accuracy currently, based on the ML model we are using).
 
-You can use this web app to snap a picture with your phone (or upload a picture from your computer) of a dish that's in-front of you, the machine learning API will than analyze the image and return a dynamic graph of the possible ingredients. We than list the possible allergic reaction causing ingredients based on the user food allergies input.
+You can use this web app to snap a picture with your phone (or upload a picture from your computer) of a dish that's in-front of you, the machine learning API will then analyze the image and return a dynamic graph of the possible ingredients. We than list the possible allergic reaction causing ingredients based on the user food allergies input.
 
 ## <a name="how"></a>How to use
 
