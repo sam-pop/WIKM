@@ -2,12 +2,13 @@
 
 ## Table of Contents
 
-* [Project Description](#desc)
+* [Project description](#desc)
+* [How to use](#how)
 * [What we used](#tech)
 * [Team Members](#team-members)
 * [Demo](#demo)
 
-## <a name="dec"></a> Project Description
+## <a name="dec"></a> Project description
 
 Will It Kill Me (WIKM) is a fully responsive (mobile first) web app that was built in a few days as a full-stack coding project.
 
@@ -17,7 +18,14 @@ We decided to use machine learning to analyze and classify images of food so we 
 
 You can use this web app to snap a picture with your phone (or upload a picture from your computer) of a dish that's in-front of you, the machine learning API will than analyze the image and return a dynamic graph of the possible ingredients. We than list the possible allergic reaction causing ingredients based on the user food allergies input.
 
-## <a name="tech"></a>What We Used
+## <a name="how"></a>How to use
+
+You can use this web app AS-IS by running it from the following link:
+https://pacific-savannah-73860.herokuapp.com/
+
+You can also run it locally by using the command `node server.js` from the command line (the web app will run on http://localhost:3000).
+
+## <a name="tech"></a>What we used
 
 ## <a name="team-members"></a>Team Members
 
