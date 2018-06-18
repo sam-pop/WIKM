@@ -1,4 +1,9 @@
+// Dependencies
+require("dotenv").config();
+
 // variables
+const CLOUDINARY_CLOUD = process.env.cloud_name;
+const CLOUDINARY_PRESET = process.env.upload_preset;
 const screenSize = $(window).width();
 
 let picURL; // holds the user uploaded picture URL
@@ -29,8 +34,8 @@ $(function () {
 
     // create and init the cloudinary upload widget
     $('#upload_widget_opener').cloudinary_upload_widget({
-            cloud_name: 'samp',
-            upload_preset: 'kd18s7co',
+            cloud_name: CLOUDINARY_CLOUD,
+            upload_preset: CLOUDINARY_PRESET,
             cropping: 'server',
             folder: 'user_photos',
             multiple: false,
@@ -48,12 +53,15 @@ $(function () {
             // on success:
             picURL = result[0].url;
             reqData.url = picURL;
-            // get the user allergies (from the multiple select dropbox)
-            let instance = M.FormSelect.getInstance($('select'));
-            let userAllergies = instance.getSelectedValues();
-            // get the user allergies (from the checkboxes)
-            for (let i of $("input:checked")) {
-                userAllergies.push(i.value);
+            if (screenSize < 667) {
+                // get the user allergies (from the multiple select dropbox)
+                let instance = M.FormSelect.getInstance($('select'));
+                let userAllergies = instance.getSelectedValues();
+            } else {
+                // get the user allergies (from the checkboxes)
+                for (let i of $("input:checked")) {
+                    userAllergies.push(i.value);
+                }
             }
             // POST to api
             $.post('/api', reqData, function (resData) {
