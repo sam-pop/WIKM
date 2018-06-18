@@ -48,9 +48,11 @@ $(function () {
             // on success:
             picURL = result[0].url;
             reqData.url = picURL;
-            // get the user allergies (from the multiple select boxes)
+            // get the user allergies (from the multiple select dropbox)
             let instance = M.FormSelect.getInstance($('select'));
             let userAllergies = instance.getSelectedValues();
+            // get the user allergies (from the checkboxes)
+
             for (let i of $("input:checked")) {
                 userAllergies.push(i.value);
             }
