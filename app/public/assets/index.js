@@ -1,6 +1,3 @@
-// Dependencies
-require("dotenv").config();
-
 // variables
 const CLOUDINARY_CLOUD = process.env.cloud_name;
 const CLOUDINARY_PRESET = process.env.upload_preset;
