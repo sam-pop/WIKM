@@ -40,7 +40,7 @@ upload_preset=your-upload-preset-for-unsigned-uploads
 
 ## <a name="tech"></a>What we used
 
-This full-stack web application web built using HTML5, CSS3, JavaScript, jQuery, [Node.JS](https://nodejs.org/en/), [Express](https://expressjs.com/) (using the [body-parser](https://github.com/expressjs/body-parser) middleware), [dotenv](https://github.com/motdotla/dotenv) module, [Clarifai AI API](https://www.clarifai.com/) (image and video recognition as a service) & [Cloudinary API](https://cloudinary.com/) (cloud media storage).
+This full-stack web application web built using HTML5, CSS3, JavaScript, jQuery, [Node.JS](https://nodejs.org/en/), [Express](https://expressjs.com/) (using the [body-parser](https://github.com/expressjs/body-parser) middleware), [dotenv](https://github.com/motdotla/dotenv) module, [Clarifai AI API](https://www.clarifai.com/) (image recognition as a service) & [Cloudinary API](https://cloudinary.com/) (cloud media storage).
 
 ## <a name="team-members"></a>Team members
 
@@ -59,4 +59,4 @@ Mobile Version:
 
 ## <a name="dis"></a>Disclaimer
 
-Please DO NOT consume any food or make any decisions about foods containing allergens based solely on this app recommendations. Doing so WILL kill you! 😅
+Please DO NOT consume any food or make any decisions about foods containing allergens based solely on the recommendations of this app. Doing so WILL kill you! 😅
