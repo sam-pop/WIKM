@@ -1,6 +1,4 @@
 // variables
-const CLOUDINARY_CLOUD = process.env.cloud_name;
-const CLOUDINARY_PRESET = process.env.upload_preset;
 const screenSize = $(window).width();
 
 let picURL; // holds the user uploaded picture URL
@@ -31,8 +29,8 @@ $(function () {
 
     // create and init the cloudinary upload widget
     $('#upload_widget_opener').cloudinary_upload_widget({
-            cloud_name: CLOUDINARY_CLOUD,
-            upload_preset: CLOUDINARY_PRESET,
+            cloud_name: 'samp',
+            upload_preset: 'kd18s7co',
             cropping: 'server',
             folder: 'user_photos',
             multiple: false,
