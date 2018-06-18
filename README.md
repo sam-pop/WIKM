@@ -25,7 +25,7 @@ https://pacific-savannah-73860.herokuapp.com/
 
 You can also run it locally by using the command `node server.js` from the command line (the web app will run on `http://localhost:3000`).
 
-Please note that in order for the app to run locally you will need to register for an API KEY from the Clarafai & Cloudinary APIs and to create a file named `.env` (in the root directory) and add the following to it, replacing the values with your own API keys:
+Please note that in order for the app to run locally you will need to register for an API KEY from the [Clarafai](https://www.clarifai.com/developer/account/keys) & [Cloudinary](https://cloudinary.com/users/register/free) APIs and to create a file named `.env` (in the root directory) and add the following to it, replacing the values with your own API keys:
 ```
 # Clarifai API
 key=your-api-key
