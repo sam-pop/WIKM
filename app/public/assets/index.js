@@ -103,7 +103,7 @@ $(function () {
                             'font-weight': 'bold'
                         }).addClass('center').html("<i class='material-icons' style='font-size: 0.8em;'>thumb_down</i>&nbsp;SPIT IT OUT!"));
                         let allergensToDisplay = "";
-                        // optimize the allergens found list (displayed in lines of 4 items) 
+                        // optimize the allergens found list (displayed in lines of 5 items) 
                         for (let i = 0; i < allergensFound.length; i++) {
                             if ((i !== 0) && (i % 5 === 0)) {
                                 allergensToDisplay += allergensFound[i] + ",<br>";
