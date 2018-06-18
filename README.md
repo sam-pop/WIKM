@@ -13,7 +13,7 @@
 
 Will It Kill Me (WIKM) is a fully responsive (mobile first) web app that was built in a few days as a full-stack coding project.
 
-This project goal was to help people with food allergies to identify possibly life threatening allergens on the go.
+The goal of this project is to help people with food allergies identify potentially life threatening allergens on the go.
 
 We decided to use AI and ML to analyze and classify images of food so we can identify common food allergens in them (with limited accuracy currently, based on the ML model we are using).
 
