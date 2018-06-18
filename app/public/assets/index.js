@@ -9,7 +9,7 @@ let allergensFound = [];
 
 
 $(function () {
-    // $('.smallScreenAllergies').hide(); //TODO: uncomment
+    $('.smallScreenAllergies').hide(); //TODO: uncomment
     $('.largeScreenAllergies').hide();
     $('.secondScreen').hide();
 
@@ -51,6 +51,9 @@ $(function () {
             // get the user allergies (from the multiple select boxes)
             let instance = M.FormSelect.getInstance($('select'));
             let userAllergies = instance.getSelectedValues();
+            for (let i of $("input:checked")) {
+                userAllergies.push(i.value);
+            }
             // POST to api
             $.post('/api', reqData, function (resData) {
                 if (resData) {
@@ -61,6 +64,7 @@ $(function () {
                     } else {
                         conceptsToArray(resData.concepts, ingArray);
                     }
+                    console.log(userAllergies);
                     // compares the found concepts to the user allergies and the allergies data, if a match is founds its pushed into an array
                     for (let allergy of userAllergies) { // iterates over the user allergies
                         for (let allergen of allergens) { // iterates over the allergens data
