@@ -102,21 +102,18 @@ $(function () {
                             'color': 'red',
                             'font-weight': 'bold'
                         }).addClass('center').html("<i class='material-icons' style='font-size: 0.8em;'>thumb_down</i>&nbsp;SPIT IT OUT!"));
-                        let allergensToDisplayOnSmallScreens = "";
-                        // optimize the allergens found list display / screen size
-                        if (screenSize < 667) {
-                            for (let i = 0; i < allergensFound.length; i++) {
-                                if ((i !== 0) && (i % 4 === 0)) {
-                                    allergensToDisplayOnSmallScreens += allergensFound[i] + ",<br>";
-                                } else {
-                                    if (i === allergensFound.length - 1)
-                                        allergensToDisplayOnSmallScreens += allergensFound[i] + ".";
-                                    else allergensToDisplayOnSmallScreens += allergensFound[i] + ", ";
-                                }
+                        let allergensToDisplay = "";
+                        // optimize the allergens found list (displayed in lines of 4 items) 
+                        for (let i = 0; i < allergensFound.length; i++) {
+                            if ((i !== 0) && (i % 4 === 0)) {
+                                allergensToDisplay += allergensFound[i] + ",<br>";
+                            } else {
+                                if (i === allergensFound.length - 1)
+                                    allergensToDisplay += allergensFound[i] + ".";
+                                else allergensToDisplay += allergensFound[i] + ", ";
                             }
-                            $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensToDisplayOnSmallScreens));
-                        } else
-                            $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensFound.toString()));
+                        }
+                        $('.userMsg').append($('<p>').addClass('center flow-text').html("The following ingredients <b>may be harmful</b> to you:<br>" + allergensToDisplay));
                     }
                     // page display animation
                     $('.secondScreen').addClass('animated zoomIn').show();
