@@ -1,7 +1,5 @@
 // variables
 const screenSize = $(window).width();
-
-let picURL; // holds the user uploaded picture URL
 let reqData = {};
 let ingArray = []; // holds an array of the concepts objects
 let allConcepts = []; // holds an array of all the concepts labels
@@ -46,9 +44,8 @@ $(function () {
                 console.log(error);
                 return;
             }
-            // on success:
-            picURL = result[0].url;
-            reqData.url = picURL;
+            // on success
+            reqData.url = result[0].url;
             if (screenSize < 667) {
                 // get the user allergies (from the multiple select dropbox)
                 let instance = M.FormSelect.getInstance($('select'));
