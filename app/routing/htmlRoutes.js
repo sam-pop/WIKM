@@ -8,9 +8,6 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, '../public/index.html'));
     });
 
-    app.get('/about', function (req, res) {
-        res.sendFile(path.join(__dirname, '../public/about.html'));
-    });
 
     // auxiliary files access routes
     app.get('/style.css', function (req, res) {
