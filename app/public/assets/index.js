@@ -137,7 +137,8 @@ $(function () {
                         fontFamily: "Cabin Sketch"
                     },
                     axisY: {
-                        title: "How sure we are %"
+                        title: "How sure we are %",
+                        maximum: 100
                     },
                     data: [{
                         type: "column",
