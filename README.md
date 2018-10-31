@@ -9,7 +9,7 @@
 - [Demo](#demo)
 - [Disclaimer](#dis)
 
-## <a name="dec"></a> Project description
+## <a name="desc"></a> Project description
 
 Will It Kill Me (WIKM) is a fully responsive (mobile first) web app that was built in a few days as a full-stack coding project.
 
