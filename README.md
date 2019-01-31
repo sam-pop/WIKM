@@ -45,9 +45,9 @@ This full-stack web application was built using HTML5, CSS3, JavaScript, jQuery,
 
 ## <a name="team-members"></a>Team members
 
-- [Martina Caputy](https://github.com/mecaputy/)
-- [Samuel Poplovitch](https://github.com/sam-pop/)
-- [Cintia Santos](https://github.com/CintiaSantos/)
+- [Samuel Poplovitch](https://github.com/sam-pop/) (Lead Developer, Front-end & Back-end)
+- [Martina Caputy](https://github.com/mecaputy/) (Front-end)
+- [Cintia Santos](https://github.com/CintiaSantos/) (Research)
 
 ## <a name="demo"></a>Demo
 
